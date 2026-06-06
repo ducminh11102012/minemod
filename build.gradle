@@ -22,47 +22,31 @@ minecraft {
     mappings channel: 'official', version: '1.16.5'
 
     runs {
-        client {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
+        def commonRunConfig = { run ->
+            run.workingDirectory project.file('run')
+            run.property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            run.property 'forge.logging.console.level', 'debug'
+            run.mods {
                 examplemod {
                     source sourceSets.main
                 }
             }
+        }
+
+        client {
+            commonRunConfig(it)
         }
 
         server {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
+            commonRunConfig(it)
         }
 
         data {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            property 'forge.logging.console.level', 'debug'
+            commonRunConfig(it)
 
             args '--mod', 'examplemod',
                  '--all',
                  '--output', file('src/generated/resources/')
-
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
         }
     }
 }
