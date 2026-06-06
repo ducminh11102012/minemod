@@ -16,7 +16,7 @@ version = '1.0'
 group = 'com.yourname.modid'
 archivesBaseName = 'modid'
 
-sourceCompatibility = targetCompatibility = '1.8'
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 
 minecraft {
     mappings channel: 'official', version: '1.16.5'
@@ -54,7 +54,9 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'examplemod',
+                 '--all',
+                 '--output', file('src/generated/resources/')
 
             mods {
                 examplemod {
@@ -63,6 +65,11 @@ minecraft {
             }
         }
     }
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.minecraftforge.net' }
 }
 
 dependencies {
@@ -93,7 +100,7 @@ publishing {
     }
     repositories {
         maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
+            url = uri("${project.projectDir}/mcmodsrepo")
         }
     }
 }
