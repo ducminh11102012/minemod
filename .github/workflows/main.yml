@@ -27,3 +27,10 @@ jobs:
 
       - name: Build
         run: ./gradlew build --no-daemon --stacktrace
+
+      # 📦 LẤY FILE BUILD ĐƯA VÀO ARTIFACT
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mod-build
+          path: build/libs/*.jar
