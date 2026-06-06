@@ -6,6 +6,6 @@ import com.yourusername.modname.PlayerEvolutions;
 public class ItemBase extends Item {
 
     public ItemBase() {
-        super(new Item.Properties().group(PlayerEvolutions.TAB));
+        super(new Item.Properties().tab(PlayerEvolutions.TAB));
     }
 }

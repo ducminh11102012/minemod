@@ -3,7 +3,7 @@ package com.yourusername.modname;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
@@ -32,7 +32,7 @@ public class PlayerEvolutions {
 
     public static final ItemGroup TAB = new ItemGroup("playerEvolutions") {
         @Override
-        public ItemStack createIcon() {
+        public ItemStack makeIcon() {
             return new ItemStack(RegistryHandler.RUBY.get());
         }
     };
