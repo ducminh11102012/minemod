@@ -3,12 +3,13 @@ package com.yourusername.modname;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.yourusername.modname.util.RegistryHandler;
+import com.yourusername.modname.util.ModUtil;
 import net.minecraftforge.common.MinecraftForge;
 
 @Mod("playerevolutions")
@@ -19,8 +20,9 @@ public class PlayerEvolutions {
 
     public PlayerEvolutions() {
         RegistryHandler.init();
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+        IEventBus modBus = ModUtil.getModEventBus();
+        modBus.addListener(this::setup);
+        modBus.addListener(this::doClientStuff);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
