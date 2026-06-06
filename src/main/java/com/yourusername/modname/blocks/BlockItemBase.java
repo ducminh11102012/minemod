@@ -7,6 +7,6 @@ import com.yourusername.modname.PlayerEvolutions;
 
 public class BlockItemBase extends BlockItem {
     public BlockItemBase(Block block) {
-        super(block, new Item.Properties().group(PlayerEvolutions.TAB));
+        super(block, new Item.Properties().tab(PlayerEvolutions.TAB));
     }
 }

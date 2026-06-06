@@ -6,7 +6,7 @@ import net.minecraftforge.common.ToolType;
 
 public class RubyBlock extends Block {
     public RubyBlock() {
-        super(Block.Properties.create(Material.IRON)
+        super(Block.Properties.of(Material.METAL)
             .harvestTool(ToolType.PICKAXE)
         );
     }
